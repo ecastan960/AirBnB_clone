@@ -7,16 +7,24 @@ Returns:
 
 import uuid
 import datetime
+str_to_date = datetime.datetime.strptime
 
 
 class BaseModel:
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """[summary]
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if kwargs:
+            self.id = kwargs["id"]
+            self.created_at = str_to_date(kwargs["created_at"],
+                                          '%Y-%m-%dT%H:%M:%S.%f')
+            self.updated_at = str_to_date(kwargs["updated_at"],
+                                          '%Y-%m-%dT%H:%M:%S.%f')
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """[summary]
