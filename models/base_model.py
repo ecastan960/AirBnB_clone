@@ -7,6 +7,7 @@ Returns:
 
 import uuid
 import datetime
+import storage
 str_to_date = datetime.datetime.strptime
 
 
@@ -25,6 +26,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            storage.new()
 
     def __str__(self):
         """[summary]
@@ -39,6 +41,7 @@ class BaseModel:
         """[summary]
         """
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
         """[summary]
