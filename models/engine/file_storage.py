@@ -2,6 +2,8 @@
 """Filestorage class"""
 
 import json
+from os import path
+import models
 
 class FileStorage:
     """G"""
@@ -13,14 +15,21 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        self.__objects[str(obj.__class__.__name__) + "." + str(self.id)] = obj
+        self.__objects[str(obj.__class__.__name__) + "." + str(obj.id)] = obj
 
     def save(self):
+        serializable_dict = {}
+        for element in self.__objects:
+            serializable_dict[element] = self.__objects[element].to_dict()
+
         with open(self.__file_path, 'w', encoding='utf8') as f:
-            json.dump(self.__objects, f)
+            json.dump(serializable_dict, f)
 
     def reload(self):
-        with open(self.__file_path, 'r', encoding='utf8') as f:
-            data = json.load(f)
-        return data
+        if path.exists(self.__file_path):
+            previous_objects = {}
+            with open(self.__file_path, 'r') as f:
+                previous_objects = json.load(f)
+            for element in previous_objects:
+                self.__objects[element] = models.BaseModel(previous_objects[element])
 
