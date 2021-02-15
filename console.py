@@ -110,7 +110,17 @@ class HBNBCommand(cmd.Cmd):
             objs.pop(name)
             print(objs)
             storage.save()
-            
+
+    def do_all(self, *args):
+        objs = storage.all()
+        tokens = args[0].split()
+
+        if len(tokens) > 0 and tokens[0] not in self.clases:
+            print("** class doesn't exist **")
+
+        aux = [str(objs[element]) for element in objs]
+        print(aux)
+
 
 if __name__ == '__main__':
 
