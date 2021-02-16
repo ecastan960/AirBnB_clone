@@ -120,9 +120,28 @@ class HBNBCommand(cmd.Cmd):
         elif len(tokens) == 0:
             aux = [str(objs[element]) for element in objs]
             print(aux)
-    
+
     def do_update(self, *args):
-        pass
+        objs = storage.all()
+        tokens = args[0].split()
+
+        if len(tokens) > 1:
+            name = str(tokens[0]) + "." + str(tokens[1])
+        if len(tokens) == 0:
+            print("** class name missing **")
+        elif len(tokens) > 0 and tokens[0] not in self.clases:
+            print("** class doesn't exist **")
+        elif len(tokens) == 1:
+            print("** instance id missing **")
+        elif name not in objs:
+            print("** no instance found **")
+        elif len(tokens) == 2:
+            print("** attribute name missing **")
+        elif len(tokens) == 3:
+            print("** value missing **")
+        elif name in objs:
+            setattr(objs[name], tokens[2], tokens[3])
+            objs[name].save()
 
 
 if __name__ == '__main__':
