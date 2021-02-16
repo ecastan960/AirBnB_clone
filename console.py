@@ -6,7 +6,13 @@ Returns:
 """
 
 import cmd
-from models.base_model import *
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.amenety import Amenity
+from models.state import State
 from models import storage
 import inspect
 import sys
@@ -47,21 +53,12 @@ class HBNBCommand(cmd.Cmd):
         if len(args[0]) <= 0:
             print("** class name missing **")
         else:
-            # y = inspect.getmembers(sys.modules[__name__], inspect.isclass)
-            # print(type(y))
-            # print(y[0][0])
-            # print (inspect.getmembers(sys.modules[__name__], inspect.isclass))
-            #clases = [command[0] for command in y]
-
-            # print(clases)
             if args[0] in self.clases:
                 x = eval(str(args[0])+'()')
                 x.save()
                 print(x.id)
             else:
                 print("** class doesn't exist **")
-            # print(x)
-            # print(self.__dict__)
 
     def do_show(self, *args):
         objs = storage.all()
@@ -97,10 +94,7 @@ class HBNBCommand(cmd.Cmd):
         elif name not in objs:
             print("** no instance found **")
         else:
-            print(objs)
-            print("---")
             objs.pop(name)
-            print(objs)
             storage.save()
 
     def do_all(self, *args):
@@ -113,7 +107,6 @@ class HBNBCommand(cmd.Cmd):
             aux = []
             for key in objs:
                 lookUpClass = key.split('.')
-                print(lookUpClass[0])
                 if lookUpClass[0] == tokens[0]:
                     aux.append(str(objs[key]))
             print(aux)
