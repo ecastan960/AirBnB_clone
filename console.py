@@ -18,14 +18,6 @@ class HBNBCommand(cmd.Cmd):
     y = inspect.getmembers(sys.modules[__name__], inspect.isclass)
     clases = [command[0] for command in y]
 
-    def do_greet(self, line):
-        """[summary]
-
-        Args:
-            line ([type]): [description]
-        """
-        print("hello")
-
     def do_EOF(self, line):
         """EOF command to exit the program
 
@@ -117,9 +109,20 @@ class HBNBCommand(cmd.Cmd):
 
         if len(tokens) > 0 and tokens[0] not in self.clases:
             print("** class doesn't exist **")
-
-        aux = [str(objs[element]) for element in objs]
-        print(aux)
+        elif len(tokens) == 1 and tokens[0] in self.clases:
+            aux = []
+            for key in objs:
+                lookUpClass = key.split('.')
+                print(lookUpClass[0])
+                if lookUpClass[0] == tokens[0]:
+                    aux.append(str(objs[key]))
+            print(aux)
+        elif len(tokens) == 0:
+            aux = [str(objs[element]) for element in objs]
+            print(aux)
+    
+    def do_update(self, *args):
+        pass
 
 
 if __name__ == '__main__':
