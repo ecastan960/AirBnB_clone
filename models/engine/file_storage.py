@@ -4,6 +4,13 @@
 import json
 from os import path
 from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.amenety import Amenity
+from models.state import State
+
 
 class FileStorage:
     """G"""
@@ -28,8 +35,21 @@ class FileStorage:
     def reload(self):
         if path.exists(self.__file_path):
             previous_objects = {}
-            with open(self.__file_path, 'r') as f:
+            with open(self.__file_path, 'r', encoding='utf8') as f:
                 previous_objects = json.load(f)
-            for element in previous_objects:
-                self.__objects[element] = BaseModel(**previous_objects[element])
-
+            for key in previous_objects:
+                lookUpClass = key.split('.')
+                if lookUpClass[0] == "BaseModel":
+                    self.__objects[key] = BaseModel(**previous_objects[key])
+                elif lookUpClass[0] == "User":
+                    self.__objects[key] = User(**previous_objects[key])
+                elif lookUpClass[0] == "Place":
+                    self.__objects[key] = Place(**previous_objects[key])
+                elif lookUpClass[0] == "State":
+                    self.__objects[key] = State(**previous_objects[key])
+                elif lookUpClass[0] == "City":
+                    self.__objects[key] = City(**previous_objects[key])
+                elif lookUpClass[0] == "Amenity":
+                    self.__objects[key] = Amenity(**previous_objects[key])
+                elif lookUpClass[0] == "Review":
+                    self.__objects[key] = Review(**previous_objects[key])
