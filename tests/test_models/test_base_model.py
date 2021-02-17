@@ -14,7 +14,7 @@ class Test_basics(unittest.TestCase):
         self.assertTrue(hasattr(my_model, "created_at"))
         self.assertTrue(hasattr(my_model, "updated_at"))
 
-    def test_id_diff_for_each_instance(self):
+    def test_multiple_id(self):
         """Each id must be diferent"""
         model1 = BaseModel()
         model2 = BaseModel()
@@ -24,6 +24,14 @@ class Test_basics(unittest.TestCase):
         self.assertFalse(model1.id == model3.id)
         self.assertFalse(model2.id == model3.id)
 
+    def test_ignore_args(self):
+        """ Tests that default attr are set even with args """
+
+        my_model = BaseModel("test", 18)
+        
+        self.assertTrue(hasattr(my_model, "id"))
+        self.assertTrue(hasattr(my_model, "created_at"))
+        self.assertTrue(hasattr(my_model, "updated_at"))
 
 if __name__ == "__main__":
     unittest.main()
