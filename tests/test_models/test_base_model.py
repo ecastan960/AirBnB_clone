@@ -54,6 +54,23 @@ class Test_basics(unittest.TestCase):
         self.assertTrue(hasattr(my_model, "__class__"))
         self.assertTrue(my_model.__class__ not in my_model.__dict__)
 
+    def test_kwargs_and_args(self):
+        """Unpacked dictionary as argument and args ignored"""
+
+        my_model = BaseModel(18, "test", **my_dict)
+
+        self.assertEqual(my_model.id, '99h15869-ki5k-5r9p-f0y1-t168f8b27636')
+        self.assertEqual(my_model.created_at.isoformat(),
+                         '2020-02-16T11:03:58.053312')
+        self.assertEqual(my_model.updated_at.isoformat(),
+                         '2020-02-16T11:03:58.053312')
+
+        self.assertTrue(hasattr(my_model, "id"))
+        self.assertTrue(hasattr(my_model, "created_at"))
+        self.assertTrue(hasattr(my_model, "updated_at"))
+        self.assertTrue(hasattr(my_model, "__class__"))
+        self.assertTrue(my_model.__class__ not in my_model.__dict__)
+
     def test_kwargs_with_class(self):
         """Unpacked dictionary has 'class' key and is ignored"""
 
