@@ -4,6 +4,9 @@ from models.base_model import BaseModel
 from datetime import datetime
 import unittest
 
+my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
+             'created_at': '2020-02-16T11:03:58.053312',
+             'updated_at': '2020-02-16T11:03:58.053312'}
 
 class Test_basics(unittest.TestCase):
     """ Simple tests """
@@ -37,17 +40,13 @@ class Test_basics(unittest.TestCase):
     def test_kwargs(self):
         """Unpacked dictionary as argument"""
 
-        my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
-             'created_at': '2020-02-16T11:03:58.053312',
-             'updated_at': '2020-02-16T11:06:59.053312'}
-
         my_model = BaseModel(**my_dict)
 
         self.assertEqual(my_model.id, '99h15869-ki5k-5r9p-f0y1-t168f8b27636')
         self.assertEqual(my_model.created_at.isoformat(),
                          '2020-02-16T11:03:58.053312')
         self.assertEqual(my_model.updated_at.isoformat(),
-                         '2020-02-16T11:06:59.053312')
+                         '2020-02-16T11:03:58.053312')
 
         self.assertTrue(hasattr(my_model, "id"))
         self.assertTrue(hasattr(my_model, "created_at"))
@@ -58,18 +57,13 @@ class Test_basics(unittest.TestCase):
     def test_kwargs_with_class(self):
         """Unpacked dictionary has 'class' key and is ignored"""
 
-        my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
-             'created_at': '2020-02-16T11:03:58.053312',
-             'updated_at': '2020-02-16T11:06:59.053312',
-             '__class__': 'BaseModel'}
-
         my_model = BaseModel(**my_dict)
 
         self.assertEqual(my_model.id, '99h15869-ki5k-5r9p-f0y1-t168f8b27636')
         self.assertEqual(my_model.created_at.isoformat(),
                          '2020-02-16T11:03:58.053312')
         self.assertEqual(my_model.updated_at.isoformat(),
-                         '2020-02-16T11:06:59.053312')
+                         '2020-02-16T11:03:58.053312')
 
         self.assertTrue(hasattr(my_model, "id"))
         self.assertTrue(hasattr(my_model, "created_at"))
@@ -81,12 +75,8 @@ class Test_basics(unittest.TestCase):
     def test_dete_converted_datatype(self):
         """Conversion from string to datetype is executed"""
 
-        my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
-             'created_at': '2020-02-16T11:03:58.053312',
-             'updated_at': '2020-02-16T11:03:58.053312'}
-
         my_model = BaseModel(**my_dict)
-        
+
         self.assertEqual(type(my_model.created_at), datetime)
         self.assertEqual(type(my_model.updated_at), datetime)
 
