@@ -19,12 +19,24 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        """[summary]
+
+        Returns:
+            [type]: [description]
+        """
         return self.__objects
 
     def new(self, obj):
+        """[summary]
+
+        Args:
+            obj ([type]): [description]
+        """
         self.__objects[str(obj.__class__.__name__) + "." + str(obj.id)] = obj
 
     def save(self):
+        """[summary]
+        """
         serializable_dict = {}
         for element in self.__objects:
             serializable_dict[element] = self.__objects[element].to_dict()
@@ -33,6 +45,8 @@ class FileStorage:
             json.dump(serializable_dict, f)
 
     def reload(self):
+        """[summary]
+        """
         if path.exists(self.__file_path):
             previous_objects = {}
             with open(self.__file_path, 'r', encoding='utf8') as f:

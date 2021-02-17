@@ -47,9 +47,13 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
+        """[summary]
+        """
         pass
 
     def do_create(self, *args, **kwargs):
+        """[summary]
+        """
         if len(args[0]) <= 0:
             print("** class name missing **")
         else:
@@ -61,6 +65,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_show(self, *args):
+        """[summary]
+        """
         objs = storage.all()
         tokens = args[0].split()
 
@@ -79,6 +85,8 @@ class HBNBCommand(cmd.Cmd):
             print(objs[name])
 
     def do_destroy(self, *args):
+        """[summary]
+        """
         objs = storage.all()
         tokens = args[0].split()
 
@@ -98,6 +106,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, *args):
+        """[summary]
+        """
         objs = storage.all()
         tokens = args[0].split()
 
@@ -115,6 +125,8 @@ class HBNBCommand(cmd.Cmd):
             print(aux)
 
     def do_update(self, *args):
+        """[summary]
+        """
         objs = storage.all()
         tokens = args[0].split()
 
@@ -138,5 +150,6 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-
+    """[summary]
+    """
     HBNBCommand().cmdloop()
