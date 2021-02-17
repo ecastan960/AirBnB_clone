@@ -3,13 +3,21 @@
 from models.base_model import BaseModel
 from datetime import datetime
 import unittest
+import json
+import os
+import models
+
 
 my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
              'created_at': '2020-02-16T11:03:58.053312',
              'updated_at': '2020-02-16T11:03:58.053312'}
 
-class Test_basics(unittest.TestCase):
+class TestBasics(unittest.TestCase):
     """ Simple tests """
+    def setUp(self):
+        """Sets Up the enviroment for tests"""
+        if os.path.exists('file.json'):
+            os.remove("file.json")
 
     def test_simple_creation(self):
         """ No arguments """
