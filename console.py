@@ -151,11 +151,11 @@ class HBNBCommand(cmd.Cmd):
     def default(self, *args):
         """[summary]
         """
-        objs = storage.all()
-        tokens = args[0].split()
+        tokens = args[0].split('.')
 
-        if tokens[0] in self.clases:
-            self.do_all(tokens[0])
+        if len(tokens) == 2:
+            if tokens[0] in self.clases and tokens[1] == 'all()':
+                self.do_all(tokens[0])
 
 if __name__ == '__main__':
     """[summary]
