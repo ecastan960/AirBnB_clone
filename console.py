@@ -148,6 +148,18 @@ class HBNBCommand(cmd.Cmd):
             setattr(objs[name], tokens[2], tokens[3])
             objs[name].save()
 
+    def do_count(self, *args):
+        """[summary]
+        """
+        objs = storage.all()
+        tokens = args[0].split()
+        count = 0
+        for keys in objs:
+            cl = keys.split('.')
+            if cl[0] == tokens[0]:
+                count += 1
+        print(count)
+
     def default(self, *args):
         """[summary]
         """
@@ -156,6 +168,8 @@ class HBNBCommand(cmd.Cmd):
         if len(tokens) == 2:
             if tokens[0] in self.clases and tokens[1] == 'all()':
                 self.do_all(tokens[0])
+            if tokens[0] in self.clases and tokens[1] == 'count()':
+                self.do_count(tokens[0])
 
 if __name__ == '__main__':
     """[summary]
