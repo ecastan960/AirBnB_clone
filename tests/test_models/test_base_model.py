@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from models.base_model import BaseModel
+from datetime import datetime
 import unittest
 
 
@@ -75,7 +76,19 @@ class Test_basics(unittest.TestCase):
         self.assertTrue(hasattr(my_model, "updated_at"))
         self.assertTrue(hasattr(my_model, "__class__"))
         self.assertTrue(my_model.__class__ not in my_model.__dict__)
+
+
+    def test_dete_converted_datatype(self):
+        """Conversion from string to datetype is executed"""
+
+        my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
+             'created_at': '2020-02-16T11:03:58.053312',
+             'updated_at': '2020-02-16T11:03:58.053312'}
+
+        my_model = BaseModel(**my_dict)
         
+        self.assertEqual(type(my_model.created_at), datetime)
+        self.assertEqual(type(my_model.updated_at), datetime)
 
 if __name__ == "__main__":
     unittest.main()
