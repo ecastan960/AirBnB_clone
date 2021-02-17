@@ -7,12 +7,13 @@ import pep8
 
 Base = BaseModel.BaseModel
 
+
 class BaseTests(unittest.TestCase):
     """Tests for Base class"""
 
-        def test_module_docs(self):
+    def test_module_docs(self):
         """Test for module docstring"""
-        pass
+    pass
 
     def test_class_docs(self):
         """Test for Base docstring"""
