@@ -148,6 +148,14 @@ class HBNBCommand(cmd.Cmd):
             setattr(objs[name], tokens[2], tokens[3])
             objs[name].save()
 
+    def default(self, *args):
+        """[summary]
+        """
+        objs = storage.all()
+        tokens = args[0].split()
+
+        if tokens[0] in self.clases:
+            self.do_all(tokens[0])
 
 if __name__ == '__main__':
     """[summary]
