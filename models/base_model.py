@@ -13,7 +13,8 @@ str_to_date = datetime.datetime.strptime
 
 
 class BaseModel:
-
+    """[summary]
+    """
     def __init__(self, *args, **kwargs):
         """[summary]
         """
@@ -58,7 +59,3 @@ class BaseModel:
         my_dict["updated_at"] = self.updated_at.isoformat()
         my_dict["__class__"] = self.__class__.__name__
         return (my_dict)
-
-
-class Urrego:
-    pass
