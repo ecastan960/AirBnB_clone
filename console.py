@@ -179,6 +179,7 @@ class HBNBCommand(cmd.Cmd):
             check_att = check_att[1:len(check_att) - 1]
             check_value = check_info[2]
             check_value = check_value[1:len(check_value) - 1]
+            up_arg = tokens[0]+' '+check_id+' '+check_att+' '+check_value
 
         if len(tokens) == 2:
             if tokens[0] in self.clases and tokens[1] == 'all()':
@@ -190,8 +191,7 @@ class HBNBCommand(cmd.Cmd):
             if tokens[0] in self.clases and check[0] == "destroy":
                 self.do_destroy(tokens[0]+' '+check_id)
             if tokens[0] in self.clases and check[0] == "update":
-                self.do_update(tokens[0]+' '+check_id+\
-                               ' '+check_att+' '+check_value)
+                self.do_update(up_arg)
 
 if __name__ == '__main__':
     """[summary]
