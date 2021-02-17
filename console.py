@@ -164,12 +164,20 @@ class HBNBCommand(cmd.Cmd):
         """[summary]
         """
         tokens = args[0].split('.')
+        check_show = tokens[1].split('(')
+
+        if check_show[0] == "show":
+            show_id = check_show[1].split(')')
+            show_id = show_id[0]
+            show_id = show_id[1:len(show_id) - 1]
 
         if len(tokens) == 2:
             if tokens[0] in self.clases and tokens[1] == 'all()':
                 self.do_all(tokens[0])
             if tokens[0] in self.clases and tokens[1] == 'count()':
                 self.do_count(tokens[0])
+            if tokens[0] in self.clases and check_show[0] == "show":
+                self.do_show(tokens[0]+' '+show_id)
 
 if __name__ == '__main__':
     """[summary]
