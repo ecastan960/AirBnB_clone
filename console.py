@@ -28,33 +28,25 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """EOF command to exit the program
-
-        Args:
-            line ([type]): [description]
-
-        Returns:
-            [type]: [description]
         """
         return True
 
     def do_quit(self, line):
         """Quit command to exit the program
-
-        Args:
-            line ([type]): [description]
-
-        Returns:
-            [type]: [description]
         """
         return True
 
     def emptyline(self):
-        """[summary]
+        """Overwrite function to do nothing
+        when press enter on an empty line
         """
         pass
 
     def do_create(self, *args, **kwargs):
-        """[summary]
+        """Creates a new instance of the
+        input class and prints the id of the
+        new instance.
+        Example on console-> create User
         """
         if len(args[0]) <= 0:
             print("** class name missing **")
@@ -67,7 +59,10 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_show(self, *args):
-        """[summary]
+        """ Prints the string representation of
+        an instance based on the class name and id
+        Example on console-> show User 1234-12345-4562
+        Example on console-> User.show("1234-12345-4562")
         """
         objs = storage.all()
         tokens = args[0].split()
@@ -87,7 +82,10 @@ class HBNBCommand(cmd.Cmd):
             print(objs[name])
 
     def do_destroy(self, *args):
-        """[summary]
+        """ Deletes an instance based on the class
+        name and id
+        Example on console-> destroy User 1234-12345-4562
+        Example on console-> User.destroy("1234-12345-4562")
         """
         objs = storage.all()
         tokens = args[0].split()
@@ -108,7 +106,11 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, *args):
-        """[summary]
+        """Prints all string representation of all
+        instances based or not on the class name
+        Example on console-> all
+        Example on console-> all User
+        Example on console-> User.all()
         """
         objs = storage.all()
         tokens = args[0].split()
@@ -127,7 +129,15 @@ class HBNBCommand(cmd.Cmd):
             print(aux)
 
     def do_update(self, *args):
-        """[summary]
+        """ Updates an instance based on the class name
+        and id by adding or updating attribute (save the
+        change into the JSON file)
+        Example on console->update User 1234-1234
+        email "aibnb@holbertonschool.com"
+        Example on console->User.update("1234-1234",
+        "first_name", "John"))
+        Example on console->User.update("1234-1234",
+        {'first_name': "John", "age": 89})
         """
         objs = storage.all()
         tokens = args[0].split()
@@ -214,6 +224,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_destroy(tokens[0]+' '+check_id)
             if tokens[0] in self.clases and check[0] == "update":
                 self.do_update(up_arg)
+
 
 if __name__ == '__main__':
     """[summary]
