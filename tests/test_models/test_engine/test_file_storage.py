@@ -42,6 +42,12 @@ class TestEngine(unittest.TestCase):
 
         self.assertTrue(models.storage.reload() is None)
 
+    def test_save_method(self):
+        """Checks for save method"""
+
+        models.storage.save()
+        self.assertTrue(os.path.exists('file.json'))
+
 
 if __name__ == '__main__':
     unittest.main()
