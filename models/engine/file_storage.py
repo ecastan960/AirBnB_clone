@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Filestorage class"""
+"""Filestorage class
+"""
 
 import json
 from os import path
@@ -13,7 +14,11 @@ from models.state import State
 
 
 class FileStorage:
-    """G"""
+    """[summary]
+
+    Returns:
+        [type]: [description]
+    """
 
     __file_path = "file.json"
     __objects = {}
