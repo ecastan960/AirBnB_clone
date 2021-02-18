@@ -37,6 +37,11 @@ class TestEngine(unittest.TestCase):
         len2 = len(models.storage.all())
         self.assertTrue(len1 < len2)
 
+    def test_reload_method(self):
+        """Checks if reload method is working"""
+
+        self.assertTrue(models.storage.reload() is None)
+
 
 if __name__ == '__main__':
     unittest.main()
