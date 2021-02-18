@@ -7,6 +7,7 @@ import models
 import os
 import unittest
 
+
 class TestEngine(unittest.TestCase):
     """Tests for the engine storage"""
 
@@ -28,13 +29,14 @@ class TestEngine(unittest.TestCase):
 
     def test_new_method(self):
         """Test for the new method of FileStorage"""
-        
+
         my_model = BaseModel()
         len1 = len(models.storage.all())
         my_model.id = 56
         models.storage.new(my_model)
         len2 = len(models.storage.all())
         self.assertTrue(len1 < len2)
+
 
 if __name__ == '__main__':
     unittest.main()
