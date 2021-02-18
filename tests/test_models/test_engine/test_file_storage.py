@@ -26,5 +26,14 @@ class TestEngine(unittest.TestCase):
 
         self.assertEqual(type(models.storage.all()), dict)
 
+    def test_new_method(self):
+
+        my_model = BaseModel()
+        len1 = len(models.storage.all())
+        my_model.id = 56
+        models.storage.new(my_model)
+        len2 = len(models.storage.all())
+        self.assertTrue(len1 < len2)
+
 if __name__ == '__main__':
     unittest.main()
