@@ -72,3 +72,5 @@ class FileStorage:
                     self.__objects[key] = Amenity(**previous_objects[key])
                 elif lookUpClass[0] == "Review":
                     self.__objects[key] = Review(**previous_objects[key])
+        else:
+            pass
