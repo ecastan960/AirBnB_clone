@@ -9,8 +9,9 @@ import models
 
 
 my_dict = {'id': '99h15869-ki5k-5r9p-f0y1-t168f8b27636',
-             'created_at': '2020-02-16T11:03:58.053312',
-             'updated_at': '2020-02-16T11:03:58.053312'}
+           'created_at': '2020-02-16T11:03:58.053312',
+           'updated_at': '2020-02-16T11:03:58.053312'}
+
 
 class TestBasics(unittest.TestCase):
     """ Simple tests """
@@ -95,7 +96,6 @@ class TestBasics(unittest.TestCase):
         self.assertTrue(hasattr(my_model, "updated_at"))
         self.assertTrue(hasattr(my_model, "__class__"))
         self.assertTrue(my_model.__class__ not in my_model.__dict__)
-
 
     def test_dete_converted_datatype(self):
         """Conversion from string to datetype is executed"""
