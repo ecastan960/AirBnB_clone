@@ -122,5 +122,14 @@ class TestBasics(unittest.TestCase):
                                      my_model.__dict__)
         self.assertEqual(name, my_model.__str__())
 
+    def test_to_dict(self):
+        """Checks the to_dict method of BaseModel"""
+
+        my_model = BaseModel(**my_dict)
+        new_dict = my_dict.copy()
+        new_dict['__class__'] = "BaseModel"
+        self.assertEqual(new_dict, my_model.to_dict())
+
+
 if __name__ == "__main__":
     unittest.main()
