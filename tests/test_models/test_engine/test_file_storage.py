@@ -16,6 +16,11 @@ class TestEngine(unittest.TestCase):
         if os.path.exists('file.json'):
             os.remove("file.json")
 
+    def tearDown(self):
+        """Cleans the enviroment for tests"""
+        if os.path.exists('file.json'):
+            os.remove("file.json")
+
     def test_simple_instantiation(self):
         """Test if a simple instance is sucessful created"""
 
