@@ -14,7 +14,9 @@ from models.review import Review
 from models.amenity import Amenity
 from models.state import State
 from models import storage
+import ast
 import inspect
+import json
 import sys
 
 
@@ -165,6 +167,7 @@ class HBNBCommand(cmd.Cmd):
         """
         tokens = args[0].split('.')
         check = tokens[1].split('(')
+        flag_dict = 0
 
         if check[0] == "show" or check[0] == "destroy":
             check_id = check[1].split(')')
@@ -172,16 +175,35 @@ class HBNBCommand(cmd.Cmd):
             check_id = check_id[1:len(check_id) - 1]
         elif check[0] == "update":
             check_info = check[1].split(')')
-            check_info = check_info[0].split(',')
-            check_id = check_info[0]
-            check_id = check_id[1:len(check_id) - 1]
-            check_att = check_info[1]
-            check_att = check_att[1:len(check_att) - 1]
-            check_value = check_info[2]
-            check_value = check_value[1:len(check_value) - 1]
-            up_arg = tokens[0]+' '+check_id+' '+check_att+' '+check_value
+            check_dict = list(check_info[0].split(',', 1))
+            check_dict = check_dict[1]
+            check_dict = check_dict[1:]
+            check_dict = ast.literal_eval(check_dict)
+            if type(check_dict) is dict:
+                flag_dict = 1
+                check_info = check_info[0].split(',')
+                check_id = check_info[0]
+                check_id = check_id[1:len(check_id) - 1]
+                for keys in check_dict:
+                    check_att = keys
+                    check_val = check_dict[keys]
+                    check_val = str(check_val)
+                    up_arg = tokens[0]+' '+check_id+' '+check_att+' '+check_val
+                    if tokens[0] in self.clases and check[0] == "update":
+                        self.do_update(up_arg)
+            else:
+                check_info = check_info[0].split(',')
+                check_id = check_info[0]
+                check_id = check_id[1:len(check_id) - 1]
+                check_att = check_info[1]
+                check_att = str(check_att)
+                check_att = check_att.replace('"', '')
+                check_val = check_info[2]
+                check_val = str(check_val)
+                check_val = check_val.replace('"', '')
+                up_arg = tokens[0]+' '+check_id+' '+check_att+' '+check_val
 
-        if len(tokens) == 2:
+        if len(tokens) == 2 and flag_dict == 0:
             if tokens[0] in self.clases and tokens[1] == 'all()':
                 self.do_all(tokens[0])
             if tokens[0] in self.clases and tokens[1] == 'count()':
