@@ -15,8 +15,16 @@ class TestEngine(unittest.TestCase):
         if os.path.exists('file.json'):
             os.remove("file.json")
 
-    def testsimple_instantiation(self):
+    def test_simple_instantiation(self):
         """Test if a simple instance is sucessful created"""
 
         new_storage = FileStorage()
         self.assertEqual(type(new_storage), FileStorage)
+
+    def test_all_method(self):
+        """Test for all method"""
+
+        self.assertEqual(type(models.storage.all()), dict)
+
+if __name__ == '__main__':
+    unittest.main()
