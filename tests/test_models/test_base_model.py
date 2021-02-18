@@ -105,5 +105,13 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(type(my_model.created_at), datetime)
         self.assertEqual(type(my_model.updated_at), datetime)
 
+    def test_save_method(self):
+        """Checks if JSON file is created"""
+
+        my_model = BaseModel()
+        my_model.save()
+        self.assertTrue(os.path.exists('file.json'))
+
+
 if __name__ == "__main__":
     unittest.main()
