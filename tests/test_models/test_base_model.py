@@ -112,6 +112,15 @@ class TestBasics(unittest.TestCase):
         my_model.save()
         self.assertTrue(os.path.exists('file.json'))
 
+    def test_str_method(self):
+        """Checks for str in base_model"""
+
+        my_model = BaseModel()
+
+        name = "[{}] ({}) {}".format(my_model.__class__.__name__,
+                                     my_model.id,
+                                     my_model.__dict__)
+        self.assertEqual(name, my_model.__str__())
 
 if __name__ == "__main__":
     unittest.main()
