@@ -27,7 +27,8 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(type(models.storage.all()), dict)
 
     def test_new_method(self):
-
+        """Test for the new method of FileStorage"""
+        
         my_model = BaseModel()
         len1 = len(models.storage.all())
         my_model.id = 56
