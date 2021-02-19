@@ -22,7 +22,7 @@ import sys
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor example."""
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
     y = inspect.getmembers(sys.modules[__name__], inspect.isclass)
     clases = [command[0] for command in y]
 
