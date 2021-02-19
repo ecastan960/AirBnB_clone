@@ -161,7 +161,8 @@ class HBNBCommand(cmd.Cmd):
             objs[name].save()
 
     def do_count(self, *args):
-        """[summary]
+        """Counts the number of instances of a class
+        Example on console->User.count()
         """
         objs = storage.all()
         tokens = args[0].split()
