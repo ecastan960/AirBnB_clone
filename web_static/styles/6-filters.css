@@ -43,7 +43,7 @@ h3 {
   font-weight: 600;
   margin: 0;
   position: absolute;
-  left: 25px;
+  left: 35px;
   top: 20px;
 }
 
@@ -52,15 +52,44 @@ h4 {
   font-size: 14px;
   margin-top: 5px;
   position: absolute;
-  left: 25px;
+  left: 35px;
   top: 40px;
+}
+
+.locations:hover > .popover{
+  display: block;
+  background-color: #FAFAFA;
+  border: 1px solid #DDDDDD;
+}
+
+.amenities:hover > .popover{
+  display: block;
+  background-color: #FAFAFA;
+  border: 1px solid #DDDDDD;
 }
 
 .popover {
   position: relative;
-  top: 80px;
-  text-decoration: none;
+  top: 56px;
+  list-style: none;
+  display: none;
+  padding-bottom: 30px;
+  
 }
-ul li {
-  text-decoration: none;
+
+h2{
+  position: relative;
+  margin-bottom: 0;
+  left: -20px;
+
+}
+
+li {
+  margin-top: 10px;
+  list-style: none;
+}
+
+.nested-list-loc{
+  position: relative;
+  left: -40px;
 }
