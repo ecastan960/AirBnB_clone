@@ -1,0 +1,75 @@
+.places {
+	position: absolute;
+	width: 1000px;
+}
+
+.places h1{
+	font-size: 30px;
+	padding-left: 20px;
+	margin-bottom: 0;
+}
+
+
+.places h2 {
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	display: inline-block;
+	text-align: center;
+	left: 30px;
+	border: 1px solid #ff5a5f;
+	font-size: 30px;
+	border-radius: 4px;
+
+}
+
+.price_by_night {
+	position: absolute;
+}
+
+.My_home {
+	position: absolute;
+	font-size: 30px;
+	color: #ff5a5f;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	min-width: 60px;
+	border: 4px solid #ff5a5f;
+	border-radius: 35px;
+	margin: 0;
+	left: 390px;
+	top: -95px;
+}
+
+.Tiny_house {
+	position: absolute;
+	font-size: 30px;
+	color: #ff5a5f;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	min-width: 60px;
+	border: 4px solid #ff5a5f;
+	border-radius: 35px;
+	margin: 0;
+	left: 865px;
+	top: -95px;
+}
+.A_suite {
+	position: absolute;
+	font-size: 30px;
+	color: #ff5a5f;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	min-width: 60px;
+	border: 4px solid #ff5a5f;
+	border-radius: 35px;
+	margin: 0;
+	left: 620px;
+	top: -95px;
+}
+.second_row h2{
+	left: 260px;
+}
