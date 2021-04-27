@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""[summary]
-
-Returns:
-    [type]: [description]
+"""This program produces a console where the user can
+input commands to enter information or ask previouly
+manufacture date.
 """
 
 import cmd
@@ -174,7 +173,9 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def default(self, *args):
-        """[summary]
+        """the default function of console
+        allow to run commands other than the
+        define previously
         """
         tokens = args[0].split('.')
         check = tokens[1].split('(')
@@ -228,6 +229,7 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    """[summary]
+    """this lines prevents this code
+    to run if it is imported
     """
     HBNBCommand().cmdloop()
