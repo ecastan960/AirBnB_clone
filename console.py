@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This program produces a console where the user can
 input commands to enter information or ask previouly
-manufacture date.
+manufacture data.
 """
 
 import cmd
