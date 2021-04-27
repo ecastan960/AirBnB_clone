@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""[summary]
-
-Returns:
-    [type]: [description]
+"""This file defines a basemodel class
 """
 
 import models
@@ -13,10 +10,11 @@ str_to_date = datetime.datetime.strptime
 
 
 class BaseModel:
-    """[summary]
+    """defines all common attributes/methods
+    for other classes
     """
     def __init__(self, *args, **kwargs):
-        """[summary]
+        """Initiation function
         """
         if kwargs:
             for key in kwargs:
@@ -34,25 +32,21 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """[summary]
-
-        Returns:
-            [type]: [description]
+        """Convert object into string
         """
         return ("[{}] ({}) {}".format(self.__class__.__name__,
                                       self.id, self.__dict__))
 
     def save(self):
-        """[summary]
+        """ updates the public instance attribute
+        updated_at with the current datetime
         """
         self.updated_at = datetime.datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """[summary]
-
-        Returns:
-            [type]: [description]
+        """returns a dictionary containing all keys/values
+        of __dict__ of the instance
         """
         my_dict = self.__dict__.copy()
         my_dict["created_at"] = self.created_at.isoformat()
