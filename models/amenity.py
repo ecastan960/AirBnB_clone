@@ -5,9 +5,6 @@ import models
 
 
 class Amenity(models.base_model.BaseModel):
-    """[summary]
-
-    Args:
-        models ([type]): [description]
+    """Class to initiate info for amenities
     """
     name = ""
