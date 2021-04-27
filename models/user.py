@@ -6,10 +6,7 @@ import models
 
 
 class User(models.base_model.BaseModel):
-    """[summary]
-
-    Args:
-        models ([type]): [description]
+    """User class
     """
     email = ""
     password = ""
