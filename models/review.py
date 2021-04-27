@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-"""[summary]
+"""This file creates a class
+that inherits from BaseModel
 """
 import models
 
 
 class Review(models.base_model.BaseModel):
-    """[summary]
-
-    Args:
-        models ([type]): [description]
+    """Review class
     """
     place_id = ""
     user_id = ""
