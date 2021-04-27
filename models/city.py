@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-"""[summary]
+"""This file creates a class
+that inherits from BaseModel
 """
 import models
 
 
 class City(models.base_model.BaseModel):
-    """[summary]
-
-    Args:
-        models ([type]): [description]
+    """City class
     """
     state_id = ""
     name = ""
