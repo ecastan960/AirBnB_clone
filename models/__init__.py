@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""H"""
+"""This file initiate packages needed
+for the programs."""
 
 from models.engine.file_storage import FileStorage
 
